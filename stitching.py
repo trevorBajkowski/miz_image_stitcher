@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+from local_utils import cropIm
 
 def stitch(im1, im2, k1, k2, matches, mask_flag=False, p=None, shp=None):
 

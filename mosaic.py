@@ -64,7 +64,7 @@ def final_mosiac(direc,  feat_method='orb', match_method='brute', out_dir="windo
         else:
             stitched, _, kp_im, o1, o2, c = extractandmatch(tmp_file, impaths[i+1], feat_method, match_method, first=False, scale=scale)
 
-        if i == len(impaths - 1):
+        if i == len(impaths) - 1:
             tmp_file = direc + "_out/" + feat_method + "/" + match_method + "/final.png"
         else:
             tmp_file = direc + "_out/" + feat_method + "/" + match_method + "/temps/temp_" + str(i) + ".png"
