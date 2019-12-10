@@ -6,11 +6,15 @@
   <style>
       html, body {
         height: 100%;
+        background-image: url("static/background.jpg");
       }
       .form {
         display: flex;
         justify-content: center;
-        border: 1px solid goldenrod;
+        border: 1px solid steelblue;
+        background-color: aliceblue;
+        padding: 10px;
+        border-radius: 10px;
       }
       td {
         padding: 10px;
@@ -19,7 +23,7 @@
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
-<body>
+<body style='background-image: url("/static/background.jpg")'>
   <div class="container-fluid" style="height: 100%">
     <div class="row align-items-center" style="height: 100%;">
       <div class="col-md-6 offset-md-3">
@@ -44,7 +48,6 @@
                 Matching Method: 
                 <input type="radio" name="matching" value="flann" checked> Flann
                 <input type="radio" name="matching" value="brute"> Brute
-                <input type="radio" name="matching" value="k-brute"> K-Brute
               </td>
             </tr>
             <tr>
@@ -54,6 +57,11 @@
                 <input name="augs" type="checkbox" value="hsv-balance"> HSV Balance
                 <input name="augs" type="checkbox" value="smooth"> Smooth
                 <input name="augs" type="checkbox" value="sharpen"> Sharpen
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Scale (between 0 and 1): <input type="text" name="scale" value="1">
               </td>
             </tr>
             <tr>

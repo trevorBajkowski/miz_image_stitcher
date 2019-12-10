@@ -22,6 +22,7 @@ def stitch():
     feature_method = request.form['feature']
     matching_method = request.form['matching']
     augs = request.form.getlist('augs')
+    scale = float(request.form['scale'])
     files = request.files.getlist('img')
 
     # Make a unique input and output folder and save the uploaded files
@@ -34,7 +35,7 @@ def stitch():
         f.save(image_directory + '/' + f.filename)
     
     # Run the mosaic program, which outputs the location of the final png
-    output_location = final_mosiac(image_directory, feat_method=feature_method, match_method=matching_method, out_dir=out_directory, edged=False, scale = 0.5, augmentations=augs)
+    output_location = final_mosiac(image_directory, feat_method=feature_method, match_method=matching_method, out_dir=out_directory, edged=False, scale = scale, augmentations=augs)
     return send_file(output_location, mimetype="image/png")
 
 # start flask app
