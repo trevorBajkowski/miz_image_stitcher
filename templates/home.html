@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Stitcher</title>
+  <style>
+      .form {
+        display: flex;
+        justify-content: center;
+        border: 1px solid goldenrod;
+        width: 30%;
+      }
+      td {
+        padding: 10px;
+      }
+      </style>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+</head>
+
+<body>
+  <div style="width: 100%; display: flex; justify-content: center; height: 500px; align-items: center;">
+    <form class="form" action="/stitch" method="post" enctype="multipart/form-data" id="form">
+      <table style="text-align: center;">
+        <tr>
+          <th><h3>Image Stitcher</h3></th>
+        </tr>
+        <tr>
+          <td>Select images: <input type="file" name="img" multiple></td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="Stitch!" onclick="$('#loading').show(); $('#form').hide();"></td>
+        </tr>
+      </table>
+    </form>
+    <div id="loading" style="display:none;"><img src="/static/loading.gif" alt=""/></div>
+  </div>
+</body>
+</html>

@@ -58,14 +58,15 @@ def extractandmatch(image1, image2, feature_method, matching_method, first=True,
 def final_mosiac(direc,  feat_method='orb', match_method='brute', out_dir="window_output", edged=True, scale=0.5):
     impaths = sorted(list(paths.list_images(direc)))
     tmp_file = impaths[0]
-    for i in range(len(impaths) - 1):
+    for i in range(len(impaths)):
+        print(i)
         if i == 0:
-            stitched, _, kp_im, o1, o2, c = extractandmatch(tmp_file, impaths[i+1], feat_method, match_method, first=True, scale=scale)
+            stitched, _, kp_im, o1, o2, c = extractandmatch(tmp_file, impaths[i], feat_method, match_method, first=True, scale=scale)
         else:
-            stitched, _, kp_im, o1, o2, c = extractandmatch(tmp_file, impaths[i+1], feat_method, match_method, first=False, scale=scale)
+            stitched, _, kp_im, o1, o2, c = extractandmatch(tmp_file, impaths[i], feat_method, match_method, first=False, scale=scale)
 
         if i == len(impaths) - 1:
-            tmp_file = direc + "_out/" + feat_method + "/" + match_method + "/final.png"
+            tmp_file = direc + "_out/final.png"
         else:
             tmp_file = direc + "_out/" + feat_method + "/" + match_method + "/temps/temp_" + str(i) + ".png"
 
@@ -81,7 +82,4 @@ def final_mosiac(direc,  feat_method='orb', match_method='brute', out_dir="windo
         cv2.imwrite(o2_path, o2)
         cv2.imwrite(m_path, kp_im)
 
-    cv2.imshow("Final Stitched Image", c)
-
-
-final_mosiac("sample_scene_1", feat_method='brisk', match_method='flann', out_dir="sample_scene_1_out", edged=False, scale = 0.5)
+    return tmp_file
