@@ -21,6 +21,7 @@
   * Graffiti Wall (med. res)
   * Affine Covariant Features Image Set
   * http://www.robots.ox.ac.uk/~vgg/research/affine/
+  * pano
 * sample_scene_7 
   * 4th Ave Reservoir Capacity Map – Cedaredge, Colorado I (high res)
   * https://dronemapper.com/sample_data/
