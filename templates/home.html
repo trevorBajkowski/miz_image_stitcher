@@ -4,60 +4,69 @@
   <meta charset="UTF-8">
   <title>Image Stitcher</title>
   <style>
+      html, body {
+        height: 100%;
+      }
       .form {
         display: flex;
         justify-content: center;
         border: 1px solid goldenrod;
-        width: 50%;
       }
       td {
         padding: 10px;
       }
       </style>
-      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
-  <div style="width: 100%; display: flex; justify-content: center; height: 500px; align-items: center;">
-    <form class="form" action="/stitch" method="post" enctype="multipart/form-data" id="form">
-      <table style="text-align: center;">
-        <tr>
-          <th><h3>Image Stitcher</h3></th>
-        </tr>
-        <tr>
-          <td>Select images: <input type="file" name="img" multiple></td>
-        </tr>
-        <tr>
-          <td>
-            Feature Method:
-            <input type="radio" name="feature" value="orb" checked> Orb
-            <input type="radio" name="feature" value="brisk"> Brisk
-            <input type="radio" name="feature" value="kaze"> Kaze
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Matching Method: 
-            <input type="radio" name="matching" value="flann" checked> Flann
-            <input type="radio" name="matching" value="brute"> Brute
-            <input type="radio" name="matching" value="k-brute"> K-Brute
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Image Augmentations:
-            <input name="augs" type="checkbox" value="rgb-balance"> RGB Balance
-            <input name="augs" type="checkbox" value="hsv-balance"> HSV Balance
-            <input name="augs" type="checkbox" value="smooth"> Smooth
-            <input name="augs" type="checkbox" value="sharpen"> Sharpen
-          </td>
-        </tr>
-        <tr>
-          <td><input type="submit" value="Stitch!" onclick="$('#loading').show(); $('#form').hide();"></td>
-        </tr>
-      </table>
-    </form>
+  <div class="container-fluid" style="height: 100%">
+    <div class="row align-items-center" style="height: 100%;">
+      <div class="col-md-6 offset-md-3">
+        <form class="form" action="/stitch" method="post" enctype="multipart/form-data" id="form">
+          <table style="text-align: center;">
+            <tr>
+              <th><h3>Image Stitcher</h3></th>
+            </tr>
+            <tr>
+              <td>Select images: <input type="file" name="img" multiple></td>
+            </tr>
+            <tr>
+              <td>
+                Feature Method:
+                <input type="radio" name="feature" value="orb" checked> Orb
+                <input type="radio" name="feature" value="brisk"> Brisk
+                <input type="radio" name="feature" value="kaze"> Kaze
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Matching Method: 
+                <input type="radio" name="matching" value="flann" checked> Flann
+                <input type="radio" name="matching" value="brute"> Brute
+                <input type="radio" name="matching" value="k-brute"> K-Brute
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Image Augmentations:
+                <input name="augs" type="checkbox" value="rgb-balance"> RGB Balance
+                <input name="augs" type="checkbox" value="hsv-balance"> HSV Balance
+                <input name="augs" type="checkbox" value="smooth"> Smooth
+                <input name="augs" type="checkbox" value="sharpen"> Sharpen
+              </td>
+            </tr>
+            <tr>
+              <td><input type="submit" value="Stitch!" onclick="$('#loading').show(); $('#form').hide();"></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
     <div id="loading" style="display:none;"><img src="/static/loading.gif" alt=""/></div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
