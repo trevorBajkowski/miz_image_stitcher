@@ -10,7 +10,6 @@ from mosaic import final_mosiac
 # Initialize the Flask application
 app = Flask(__name__, template_folder="templates")
 
-# route http posts to this method
 @app.route('/', methods=['GET'])
 def home():
     return render_template('home.html')
@@ -18,11 +17,13 @@ def home():
 
 @app.route('/stitch', methods=['POST'])
 def stitch():
-    params = request.form
-    feature_method = params['feature']
-    matching_method = params['matching']
-    augs = params.getlist('augs')
+    # Get all our form info
+    feature_method = request.form['feature']
+    matching_method = request.form['matching']
+    augs = request.form.getlist('augs')
     files = request.files.getlist('img')
+
+    # Make a unique input and output folder and save the uploaded files
     ts = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     image_directory = app.root_path + '/uploads/' + ts
     out_directory = image_directory + "_out"
@@ -30,9 +31,8 @@ def stitch():
     for f in files:
         f.save(image_directory + '/' + f.filename)
     
+    # Run the mosaic program, which outputs the location of the final png
     output_location = final_mosiac(image_directory, feat_method=feature_method, match_method=matching_method, out_dir=out_directory, edged=False, scale = 0.5, augmentations=augs)
-    image_location = image_directory + "_out/final.png"
-
     return send_file(output_location, mimetype="image/png")
 
 # start flask app
