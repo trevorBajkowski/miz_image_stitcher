@@ -38,7 +38,7 @@ def matchfeatures(f1,f2,method='brute'):
             if len(x) == 2:
                 m = x[0]
                 n = x[1]
-                if m.distance < 0.8 * n.distance:
+                if m.distance < 0.65 * n.distance:
                     good.append(m)
 
         print('[INFO] {} matches found'.format(len(good)))
