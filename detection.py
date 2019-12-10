@@ -11,13 +11,13 @@ def extractkeys(image, method='orb', params=[], mask=None):
         alg = cv2.ORB_create()
     ## Features from Accelerated Segment Test ##
     elif method == 'brisk':
-        alg = cv2.BRISK_create(thresh=55)
+        alg = cv2.BRISK_create(thresh=65)
     ## KAZE ##
     elif method == 'kaze':
         alg = cv2.KAZE_create()
     ## Accelerated KAZE
     else:
-        alg = cv2.AKAZE_create(threshold=0.001)
+        alg = cv2.AKAZE_create(threshold=0.002)
 
     (keys, feats) = alg.detectAndCompute(image, mask=mask)
     return keys, feats
