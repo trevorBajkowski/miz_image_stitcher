@@ -4,6 +4,7 @@ from flask import Flask, request, Response, render_template, redirect, send_file
 import numpy as np
 import cv2
 from os import mkdir
+from local_utils import ensure_dir
 import datetime
 from mosaic import final_mosiac
 
@@ -27,6 +28,7 @@ def stitch():
     ts = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     image_directory = app.root_path + '/uploads/' + ts
     out_directory = image_directory + "_out"
+    ensure_dir(image_directory)
     mkdir(image_directory)
     for f in files:
         f.save(image_directory + '/' + f.filename)
